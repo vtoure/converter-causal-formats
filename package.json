@@ -1,6 +1,6 @@
 {
   "name": "converter-causal-formats",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Bi-directional converter of a mi-json and a causal-json",
   "main": "ConverterCausalFormats.js",
   "scripts": {
@@ -23,6 +23,7 @@
     "causal-json"
   ],
   "author": "Vasundra Touré",
+  "license": "AGPL-3.0",
   "devDependencies": {
     "@babel/core": "^7.0.0-rc.1",
     "@babel/preset-env": "^7.0.0-rc.1",
