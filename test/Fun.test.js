@@ -1,10 +1,10 @@
-const fun = require('../src/fun');
+const fun = require('../src/Fun');
 
 const chai = require('chai');
 chai.should();
 const expect = chai.expect;
 
-describe('fun.js', () => {
+describe('Fun.js', () => {
         describe('getDbnameAndId', () =>{
             it('return the databaseName:identifier for several databases', cb =>{
                 var url_uniprot = "https://www.uniprot.org/uniprot/P31750";

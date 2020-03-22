@@ -1,10 +1,10 @@
-const FlatJson2CausalJson = require('../src/flatJSON2CausalJSON');
+const FlatJson2CausalJson = require('../src/FlatTempJson2CausalJson');
 
 const chai = require('chai');
 chai.should();
 const expect = chai.expect;
 
-describe('CausalJsonExport.js', () => {
+describe('FlatTempJson2CausalJson.js', () => {
     const causalExport = new FlatJson2CausalJson();
 
     describe('exportCausalJson', () => {

@@ -1,14 +1,14 @@
-const { setValue } = require('./fun');
+const { setValue } = require('./Fun');
 
-module.exports = class ExportCausalJson {
+module.exports = class FlatTempJson2CausalJson {
 
-    constructor(causalJson, mapping) {
+    constructor(causalJson) {
         //Array of causal statements in a causalJson format
         this.causalJson = {};
         // A map with VSM terms as keys and causalJson structure as values
-        this.mapping = ExportCausalJson.initMapping();
+        this.mapping = FlatTempJson2CausalJson.initMapping();
     }
-
+    
     /**
      * Map of VSM json objects (keys) to causal json objects (values)
      * @returns {Map<any, any>}

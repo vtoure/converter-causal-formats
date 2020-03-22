@@ -1,11 +1,12 @@
 {
   "name": "converter-causal-formats",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Bi-directional converter of a mi-json and a causal-json",
   "main": "ConverterCausalFormats.js",
   "scripts": {
-    "test": "mocha \"test/*.test.js\" --check-leaks",
-    "build": "webpack --config webpack.config.js"
+    "test": "nyc --reporter=lcov mocha \"test/*.test.js\" --check-leaks",
+    "build": "webpack --config webpack.config.js",
+    "coverage": "codecov"
   },
   "repository": {
     "type": "git",
@@ -27,15 +28,14 @@
     "@babel/preset-env": "^7.0.0-rc.1",
     "babel-loader": "^8.0.0-beta.4",
     "chai": "^4.2.0",
+    "codecov": "^3.6.5",
     "mocha": "^5.2.0",
+    "nyc": "^15.0.0",
     "clean-webpack-plugin": "^1.0.1",
     "copy-webpack-plugin": "^5.1.1",
     "terser-webpack-plugin": "^2.3.1",
     "webpack": "^4.29.0",
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
-  },
-  "dependencies": {
-    "export-causal-json": "^1.0.4"
   }
 }
