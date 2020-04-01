@@ -16,32 +16,20 @@ It enables the three following types of conversion:
 
 ### Initialisation
 ```javascript
+//Initialize
 var ConverterCausalFormats = require('./ConverterCausalFormats')
 const causalExport = new ConvertCausalFormats();
-```
-### Setting the type of conversion (mandatory)
-The conversion type must be specified with: 
-```javascript
+
+//(mandatory) set the type of conversion. The options are : 'flatjson2causaljson', 'causaljson2mitab' and 'flatjson2mitab'
 causalExport.choice = <CONVERSION TYPE STRING>;
-```
-The conversion types supported are: `flatjson2causaljson`, `causaljson2mitab` and `flatjson2mitab`
 
-### Setting the object to convert (mandatory)
-The input object (i.e., data to convert) must be specified with:
-```javascript
+//(mandatory) set the input (e.g., object to convert - must be a flat json or a causal-json)
 causalExport.input = <INPUT OBJECT>;
-```
-It should be either a flat template JSON or a causal-json object
 
-### Setting the output object (optional)
-The output object (i.e., that will contain the converted data) can be specified:
-```javascript
+//(optional )set the output object (i.e., that will contain the converted data), can be an array or string
 causalExport.output = <OUTPUT OBJECT>;
-```
-It can be an array in the case of a conversion to a causal-json or a string in the case of a conversion to PSI-MITAB2.8.
 
-### Call function to do the conversion
-```javascript
+// Do the conversion
 var convertedObject = causalExport.doConversion();
 ```
 
