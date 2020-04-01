@@ -32,7 +32,7 @@ var convertedObject = causalExport.doConversion();
 ```
 
 ## Build configuration
-`converter-causal-formats` is published as an npm package.
+[`converter-causal-formats`](https://www.npmjs.com/package/converter-causal-formats) is published as an npm package.
 
 ### Use in Node.js
 1. run ```npm install converter-causal-formats```
@@ -171,7 +171,7 @@ In this project, a flat template JSON handles causal statements, generated in th
 }
 ```
 
-#### Example of a flat template JSON generated from the VSM JSON above
+#### Example of a flat template JSON generated from the VSM JSON example above
 ```json
 {
   "source": {
@@ -202,7 +202,7 @@ In this project, a flat template JSON handles causal statements, generated in th
 ```
 
 ### The causal-json format
-The causal-json is a JSON-based format that enables the efficient storage of causal interactions following the [MI2CAST guidelines](https://github.com/MI2CAST/MI2CAST). 
+The causal-json is a JSON-based format that enables the efficient storage of causal interactions following the [MI2CAST guidelines](https://github.com/MI2CAST/MI2CAST).
 
 #### Example of a causal-json
 ```json
