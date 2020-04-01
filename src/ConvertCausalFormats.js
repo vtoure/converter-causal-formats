@@ -27,10 +27,7 @@ module.exports = class ConvertCausalFormats {
                 mitabObj.fillMitab(causalJsonObj.causalJson);
                 return mitabObj.mitab;
             default:
-                console.log("error choice of conversion");
-
+                alert("Unknown conversion type");
         }
-
-
     }
 }

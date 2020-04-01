@@ -8,14 +8,14 @@ var date = new Date();
 var month = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1); // adds double digit in the month
 var today = date.getFullYear() + '/' + month + '/' + date.getDate();
 
-describe('ConvertCausalFormat.js', () =>{
+describe('ConvertCausalFormat.js', () => {
     const causalExport = new ConvertCausalFormats();
 
     describe('doConversion', () => {
-        it('translates a flat template json into a causal json format', cb =>{
+        it('translates a flat template json into a causal json format', cb => {
             causalExport.choice = "flatjson2causaljson";
             //input is a vsm json object
-            causalExport.input  = {
+            causalExport.input = {
                 "source": {
                     "str": "E2F8_HUMAN",
                     "id": "https://www.uniprot.org/uniprot/A0AVK6"
@@ -78,7 +78,7 @@ describe('ConvertCausalFormat.js', () =>{
             cb();
         })
 
-        it('translate a flat template json into a mitab2.8 format', cb =>{
+        it('translate a flat template json into a mitab2.8 format', cb => {
             causalExport.choice = "flatjson2mitab";
             causalExport.input = {
                 "source": {
@@ -120,7 +120,7 @@ describe('ConvertCausalFormat.js', () =>{
             cb();
         })
 
-        it('translate a causal json into a mitab2.8 format', cb =>{
+        it('translate a causal json into a mitab2.8 format', cb => {
             causalExport.choice = "causaljson2mitab";
             causalExport.input = {
                 "causalStatement": [
@@ -165,6 +165,5 @@ describe('ConvertCausalFormat.js', () =>{
             expect(causalExport.doConversion().toString()).to.equal(converted.toString());
             cb();
         })
-
     });
 });

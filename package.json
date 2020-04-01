@@ -1,7 +1,7 @@
 {
   "name": "converter-causal-formats",
-  "version": "0.0.3",
-  "description": "Bi-directional converter of a mi-json and a causal-json",
+  "version": "1.0.0",
+  "description": "Converter of a template json file with causal information into causal-json or PSI-MITAB2.8",
   "main": "ConverterCausalFormats.js",
   "scripts": {
     "test": "nyc --reporter=lcov mocha \"test/*.test.js\" --check-leaks",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vtoure/converter-formats-json"
+    "url": "git+https://github.com/vtoure/converter-causal-formats"
   },
   "bugs": {
     "url": "https://github.com/vtoure/converter-causal-formats/issues"
@@ -19,7 +19,7 @@
     "converter",
     "VSM",
     "molecular interaction",
-    "mi-json",
+    "mitab2.8",
     "causal-json"
   ],
   "author": "Vasundra Touré",
