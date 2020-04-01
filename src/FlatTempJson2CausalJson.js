@@ -49,18 +49,19 @@ module.exports = class FlatTempJson2CausalJson {
     }
 
     /**
-     * Get a Causal Json from a flat VSM object containing a causal interaction.
-     * @param flatVsm
+     * Get a Causal Json from a flat template json object containing a causal interaction.
+     * Note: The flat template json object is generated from a VSM json representing a causal interaction in this case.
+     * @param flatJson
      * @returns {boolean|{}|*}
      */
-    exportCausalJson(flatVsm) {
+    exportCausalJson(flatJson) {
         //Temporary json object that will be filled
         let tempJson = {};
         let path = "";
 
-        for (let vsmTerm in flatVsm) {
-            if (flatVsm.hasOwnProperty(vsmTerm)) {
-                if (!flatVsm[vsmTerm] || !flatVsm) {
+        for (let vsmTerm in flatJson) {
+            if (flatJson.hasOwnProperty(vsmTerm)) {
+                if (!flatJson[vsmTerm] || !flatJson) {
                     return true;
                 }
                 switch (vsmTerm) {
@@ -68,7 +69,7 @@ module.exports = class FlatTempJson2CausalJson {
                     case "target":
                     case "effect":
                         path = (this.mapping.get(vsmTerm))[0];
-                        setValue(path, flatVsm[vsmTerm], tempJson);
+                        setValue(path, flatJson[vsmTerm], tempJson);
                         break;
                     case "targetModificationMod":
                     case "sourceModificationMod":
@@ -76,32 +77,32 @@ module.exports = class FlatTempJson2CausalJson {
                     case "targetModificationModRes":
                     case "sourceModificationModPos":
                     case "targetModificationModPos":
-                        for (let index of flatVsm[vsmTerm].keys()) {
-                            if (index in flatVsm[vsmTerm] !== false) {
+                        for (let index of flatJson[vsmTerm].keys()) {
+                            if (index in flatJson[vsmTerm] !== false) {
                                 path = this.mapping.get(vsmTerm)[0] + "." + this.mapping.get(vsmTerm)[1] + "." + this.mapping.get(vsmTerm)[2]+index + "." + this.mapping.get(vsmTerm)[3];
-                                setValue(path, flatVsm[vsmTerm][index], tempJson)
+                                setValue(path, flatJson[vsmTerm][index], tempJson)
                             }
                         }
                         break;
                     case "reference":
                     case "evidence":
-                        for (let index of flatVsm[vsmTerm].keys()) {
+                        for (let index of flatJson[vsmTerm].keys()) {
                             path = this.mapping.get(vsmTerm)[0] + "." + this.mapping.get(vsmTerm)[1]+index;
-                            setValue(path, flatVsm[vsmTerm][index], tempJson);
+                            setValue(path, flatJson[vsmTerm][index], tempJson);
                         }
                         break;
                     case "targetExperiment":
                     case "sourceExperiment":
-                        for (let index of flatVsm[vsmTerm].keys()) {
-                            if (index in flatVsm[vsmTerm] !== false) {
+                        for (let index of flatJson[vsmTerm].keys()) {
+                            if (index in flatJson[vsmTerm] !== false) {
                                 path = this.mapping.get(vsmTerm)[0] + "." + this.mapping.get(vsmTerm)[1] + "." + this.mapping.get(vsmTerm)[2]+index;
-                                setValue(path, flatVsm[vsmTerm][index], tempJson)
+                                setValue(path, flatJson[vsmTerm][index], tempJson)
                             }
                         }
                         break;
                     default: //biologicalActivity, entityTaxon, etc.
                         path = this.mapping.get(vsmTerm)[0] + "." + this.mapping.get(vsmTerm)[1];
-                        setValue(path, flatVsm[vsmTerm], tempJson);
+                        setValue(path, flatJson[vsmTerm], tempJson);
                         break;
                 }
             }
