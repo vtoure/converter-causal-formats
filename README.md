@@ -202,7 +202,7 @@ In this project, a flat template JSON handles causal statements, generated in th
 ```
 
 ### The causal-json format
-The causal-json is a JSON-based format that enables the efficient storage of causal interactions following the [MI2CAST guidelines](https://github.com/MI2CAST/MI2CAST).
+The causal-json is a JSON-based format that enables the efficient storage of causal interactions following the [MI2CAST guidelines](https://github.com/MI2CAST/MI2CAST). More information at: [github.com/vtoure/causal-json](https://github.com/vtoure/causal-json)
 
 #### Example of a causal-json
 ```json
