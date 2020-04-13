@@ -1,6 +1,6 @@
 {
   "name": "converter-causal-formats",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Converter of a template json file with causal information into causal-json or PSI-MITAB2.8",
   "main": "ConverterCausalFormats.js",
   "scripts": {

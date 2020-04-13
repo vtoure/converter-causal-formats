@@ -40,7 +40,6 @@ module.exports = class FlatTempJson2CausalJson {
         VSM_TO_CAUSALJSON.set("effectMechanism", ["effect", "biologicalMechanism"]);
         VSM_TO_CAUSALJSON.set("effectTaxon", ["effect", "effectTaxon"]);
         VSM_TO_CAUSALJSON.set("effectCompartment", ["effect", "effectCompartment"]);
-        VSM_TO_CAUSALJSON.set("effectCellLine", ["effect", "cellLine"]);
         VSM_TO_CAUSALJSON.set("effectCellType", ["effect", "cellType"]);
         VSM_TO_CAUSALJSON.set("effectTissueType", ["effect", "tissueType"]);
         VSM_TO_CAUSALJSON.set("reference", ["references", "reference"]);
