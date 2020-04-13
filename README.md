@@ -6,57 +6,43 @@
 [![License](https://img.shields.io/npm/l/converter-causal-formats)](LICENSE.md)
 
 
-The `converter-causal-formats` is a converter to generate different formats handling molecular interaction causal statements. 
-It enables the three following types of conversion:
+The `converter-causal-formats` is a converter that generates different formats handling molecular interaction causal statements. 
+It enables the following types of conversion:
 * flat template JSON to causal-json
 * flat template JSON to PSI-MITAB2.8
 * causal-json to PSI-MITAB2.8
 
 ## Usage
-
-### Initialisation
 ```javascript
+//Initialize
 var ConverterCausalFormats = require('./ConverterCausalFormats')
 const causalExport = new ConvertCausalFormats();
-```
-### Setting the type of conversion (mandatory)
-The conversion type must be specified with: 
-```javascript
+
+//(mandatory) set the type of conversion. The options are : 'flatjson2causaljson', 'causaljson2mitab' and 'flatjson2mitab'
 causalExport.choice = <CONVERSION TYPE STRING>;
-```
-The conversion types supported are: `flatjson2causaljson`, `causaljson2mitab` and `flatjson2mitab`
 
-### Setting the object to convert (mandatory)
-The input object (i.e., data to convert) must be specified with:
-```javascript
+//(mandatory) set the input (e.g., object to convert - must be a flat json or a causal-json)
 causalExport.input = <INPUT OBJECT>;
-```
-It should be either a flat template JSON or a causal-json object
 
-### Setting the output object (optional)
-The output object (i.e., that will contain the converted data) can be specified:
-```javascript
+//(optional )set the output object (i.e., that will contain the converted data), can be an array or string
 causalExport.output = <OUTPUT OBJECT>;
-```
-It can be an array in the case of a conversion to a causal-json or a string in the case of a conversion to PSI-MITAB2.8.
 
-### Call function to do the conversion
-```javascript
+// Do the conversion
 var convertedObject = causalExport.doConversion();
 ```
 
-
 ## Build configuration
-`converter-causal-formats` is published as an npm package.
+[`converter-causal-formats`](https://www.npmjs.com/package/converter-causal-formats) is published as an npm package.
 
-### Use ConverterCausalFormats in Node.js
+### Use in Node.js
 1. run ```npm install converter-causal-formats```
-2. use ```require('./ConverterCausalFormats')```
+2. use ```require('./ConvertCausalFormats')```
 
-### Use ConverterCausalFormats in an HTML file
+### Use in an HTML file
 1. run`npm install converter-causal-formats`
 2. run`npm build`. This generates the build file converter-causal-formats.min.js in the dist folder.
 3. Include `<script src="../dist/converter-causal-formats.min.js">`
+
 
 ## The different formats
 
@@ -64,9 +50,7 @@ var convertedObject = causalExport.doConversion();
 The flat template JSON is a flattened JSON version of a VSM JSON. A VSM JSON can generated when data is curated in a [VSM-box](https://github.com/vsmjs/vsm-box).
 In this project, a flat template JSON handles causal statements, generated in the [causalBuilder](https://mi2cast.github.io/causalBuilder/) curation interface using the VSM technology.
 
-
 #### Example of a VSM JSON
-
 ```json
 {
   "terms": [
@@ -187,9 +171,7 @@ In this project, a flat template JSON handles causal statements, generated in th
 }
 ```
 
-
-#### Example of a flat template JSON generated from the VSM JSON above
-
+#### Example of a flat template JSON generated from the VSM JSON example above
 ```json
 {
   "source": {
@@ -219,10 +201,8 @@ In this project, a flat template JSON handles causal statements, generated in th
 }
 ```
 
-
 ### The causal-json format
-The causal-json is a JSON-based format that enables the efficient storage of causal interactions following the [MI2CAST guidelines](https://github.com/MI2CAST/MI2CAST). 
-
+The causal-json is a JSON-based format that enables the efficient storage of causal interactions following the [MI2CAST guidelines](https://github.com/MI2CAST/MI2CAST).
 
 #### Example of a causal-json
 ```json
@@ -265,8 +245,6 @@ The causal-json is a JSON-based format that enables the efficient storage of cau
 ### The PSI-MITAB2.8 format
 The PSI-MITAB2.8 is a tab-delimited format that retains information about molecular interactions and more specifically causal interactions. 
 More information can be found at: [https://psicquic.github.io/MITAB28Format.html](https://psicquic.github.io/MITAB28Format.html).
-
-
 
 ## License
 This project is licensed under the AGPL-3.0 license - see [LICENSE.md](LICENSE.md).
