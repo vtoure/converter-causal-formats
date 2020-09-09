@@ -47,7 +47,7 @@ var convertedObject = causalExport.doConversion();
 ## The different formats
 
 ### The flat template JSON format
-The flat template JSON is a flattened JSON version of a VSM JSON. A VSM JSON can generated when data is curated in a [VSM-box](https://github.com/vsmjs/vsm-box).
+The flat template JSON is a flattened JSON version of a VSM JSON. A VSM JSON can generated when data is curated in a [VSM-box](https://github.com/vsm/vsm-box).
 In this project, a flat template JSON handles causal statements, generated in the [causalBuilder](https://mi2cast.github.io/causalBuilder/) curation interface using the VSM technology.
 
 #### Example of a VSM JSON
