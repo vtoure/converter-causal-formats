@@ -33,23 +33,40 @@ module.exports = class CausalJson2Mitab28 {
      * @returns {string}
      */
     fillMitab(file) {
-         this.mitab = setHeader(this.mitab);
+        this.mitab = setHeader(this.mitab);
 
         if (file.causalStatement) {
+
+            // For incomplete data, this helps us avoid many try-catches:
+            file.causalStatement[0] = {
+              source: {},
+              target: {},
+              effect: {},
+              ...file.causalStatement[0]
+            }
+
             //1. source id
-            this.mitab = this.mitab + getDbnameAndId(file.causalStatement[0].source.identifier) + "\t";
+            try {
+              this.mitab = this.mitab + getDbnameAndId(file.causalStatement[0].source.identifier) + "\t";
+            } catch(err) { this.mitab = this.mitab + "-\t"; }
 
             //2. target id
-            this.mitab = this.mitab + getDbnameAndId(file.causalStatement[0].target.identifier) + "\t";
+            try {
+              this.mitab = this.mitab + getDbnameAndId(file.causalStatement[0].target.identifier) + "\t";
+            } catch(err) { this.mitab = this.mitab + "-\t"; }
 
             //3. and 4. no alternative identifiers for source and target
             this.mitab = this.mitab + "-\t-\t";
 
             //5. alias for source
-            this.mitab = this.mitab + getDbName(file.causalStatement[0].source.identifier) + ":" + file.causalStatement[0].source.name + "(synonym)\t";
+            try {
+              this.mitab = this.mitab + getDbName(file.causalStatement[0].source.identifier) + ":" + file.causalStatement[0].source.name + "(synonym)\t";
+            } catch(err) { this.mitab = this.mitab + "-\t"; }
 
             //6. alias for target
-            this.mitab = this.mitab + getDbName(file.causalStatement[0].target.identifier) + ":" + file.causalStatement[0].target.name + "(synonym)\t";
+            try {
+              this.mitab = this.mitab + getDbName(file.causalStatement[0].target.identifier) + ":" + file.causalStatement[0].target.name + "(synonym)\t";
+            } catch(err) { this.mitab = this.mitab + "-\t"; }
 
             //7. interaction detection method
             this.mitab = this.mitab + "psi-mi:\"MI:0364\"(inferred by curator)\t";
@@ -58,12 +75,13 @@ module.exports = class CausalJson2Mitab28 {
             this.mitab = this.mitab + "-\t";
 
             //9. publication identifier(s)
-            var publications = "";
-            for (var i = 0; i < file.causalStatement[0].references.length; i++) {
-                publications = publications + getDbnameAndId(file.causalStatement[0].references[i]["reference" + i].identifier) + "|";
-            }
-
-            this.mitab = this.mitab + publications.slice(0, -1) + "\t"; //slice removes the last "|" character
+            try {
+              var publications = "";
+              for (var i = 0; i < file.causalStatement[0].references.length; i++) {
+                  publications = publications + getDbnameAndId(file.causalStatement[0].references[i]["reference" + i].identifier) + "|";
+              }
+              this.mitab = this.mitab + publications.slice(0, -1) + "\t"; //slice removes the last "|" character
+            } catch(err) { this.mitab = this.mitab + "-\t"; }
 
             //10. Taxid source
             "entityTaxon" in file.causalStatement[0].source ?
@@ -201,7 +219,11 @@ module.exports = class CausalJson2Mitab28 {
                 this.mitab = this.mitab + getDbnameAndId(file.causalStatement[0].effect.biologicalMechanism.identifier) + "(" + file.causalStatement[0].effect.biologicalMechanism.name + ")\t" : this.mitab = this.mitab + "-\t";
 
             //46. Causal statement
-            this.mitab = this.mitab + getDbnameAndId(file.causalStatement[0].effect.identifier) + "(" + file.causalStatement[0].effect.name + ")\n";
+            try {
+              this.mitab = this.mitab + getDbnameAndId(file.causalStatement[0].effect.identifier) + "(" + file.causalStatement[0].effect.name + ")";
+            } catch(err) { this.mitab = this.mitab + "-"; }
+
+            this.mitab = this.mitab + "\n";
 
             //console.log(file.causalStatement[0].evidences)
             // var list_evidence = "";

@@ -532,5 +532,32 @@ describe('FlatTempJson2CausalJson.js', () => {
             causalExport.exportCausalJson(vsmJson).should.deep.equal(causalJson);
             cb();
         });
+
+        it('returns the causal json for incomplete data', cb => {
+            const vsmJson = {
+                "source": {
+                    "str": "E2F8_HUMAN",
+                    "id": "https://www.uniprot.org/uniprot/A0AVK6"
+                },
+                "effect": null,
+                "target": null,
+                "reference": [],
+                "evidence": []
+            }
+
+            const causalJson = {
+                "causalStatement": [
+                    {
+                        "source": {
+                            "identifier": "https://www.uniprot.org/uniprot/A0AVK6",
+                            "name": "E2F8_HUMAN"
+                        }
+                    }
+                ]
+            }
+
+            causalExport.exportCausalJson(vsmJson).should.deep.equal(causalJson);
+            cb();
+        });
     });
 });
