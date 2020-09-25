@@ -60,9 +60,12 @@ module.exports = class FlatTempJson2CausalJson {
 
         for (let vsmTerm in flatJson) {
             if (flatJson.hasOwnProperty(vsmTerm)) {
-                if (!flatJson[vsmTerm] || !flatJson) {
-                    return true;
-                }
+
+                // (Commented out in order to allow incomplete data)
+                ////if (!flatJson[vsmTerm] || !flatJson) {
+                ////    return true;
+                ////}
+
                 switch (vsmTerm) {
                     case "source":
                     case "target":
